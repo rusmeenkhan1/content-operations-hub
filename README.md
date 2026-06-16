@@ -271,6 +271,7 @@ git push
 | Content Operations Hub | https://da.live/app/{org}/{site}/tools/content-operations-hub | Bulk Operations - preview, publish, remove & delete pages |
 
 **Note**: Replace `{org}` with your organization name and `{site}` with your site name
+![setup](/tools/screenshots/setup.png)
 
 5. Save the config file
 
