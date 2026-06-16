@@ -13,7 +13,10 @@ function buildSiteKey(org, site, ref) {
 }
 
 /**
- * @returns {{ v: number, sites: Record<string, { folderPath: string, pageScope: 'folder'|'tree' }> }}
+ * @returns {{
+ *   v: number,
+ *   sites: Record<string, { folderPath: string, pageScope: 'folder'|'tree' }>,
+ * }}
  */
 function readStore() {
   try {
@@ -26,20 +29,29 @@ function readStore() {
     if (!parsed.sites || typeof parsed.sites !== 'object') {
       return { v: CACHE_VERSION, sites: {} };
     }
-    return /** @type {{ v: number, sites: Record<string, { folderPath: string, pageScope: 'folder'|'tree' }> }} */ (parsed);
+    /** @type {{
+     *   v: number,
+     *   sites: Record<string, { folderPath: string, pageScope: 'folder'|'tree' }>,
+     * }} */
+    const store = parsed;
+    return store;
   } catch {
     return { v: CACHE_VERSION, sites: {} };
   }
 }
 
 /**
- * @param {{ v: number, sites: Record<string, { folderPath: string, pageScope: 'folder'|'tree' }> }} store
+ * @param {{
+ *   v: number,
+ *   sites: Record<string, { folderPath: string, pageScope: 'folder'|'tree' }>,
+ * }} store
  */
 function writeStore(store) {
   try {
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(store));
     return true;
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.warn('[bulk-pp] browse location persist failed', err);
     return false;
   }

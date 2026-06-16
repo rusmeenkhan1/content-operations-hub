@@ -17,6 +17,7 @@ function formatDurationSeconds(seconds) {
  * @param {number} done
  * @param {number} total
  */
+// eslint-disable-next-line import/prefer-default-export
 export function formatRuntimeStatusEta(startedAt, done, total) {
   if (!startedAt || total <= 0 || done <= 0 || done >= total) {
     if (done >= total && total > 0) return 'Finishing up…';
